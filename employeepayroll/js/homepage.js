@@ -13,19 +13,22 @@ const getEmployeePayrollDataFromStorage = () => {
   
 
 const createInnerHTML =()=>{
-    const headerHTML=" <th></th><th>Name</th><th>Gender</th><th>Departments</th><th>Salary</th><th>StartDate</th>";
+ 
+    const headerHTML=" <th></th><th>Name</th><th>EmailID</th><th>Gender</th><th>Departments</th><th>Contact</th><th>Salary</th><th>D-O-B</th>";
     let innerHTML=`${headerHTML}`;
     for(const employeePayrollData of empPayrollList ){
         innerHTML=` ${innerHTML}
                       <tr>
-                          <td><img class="profile" src="${employeePayrollData._profilePic}"></td>
+                      <td><img class="profile" src="${employeePayrollData._profilePic}" ></td>
                           <td>${employeePayrollData._name}</td>
+                          <td>${employeePayrollData._EmailID}</td>
                           <td>${employeePayrollData._gender}</td>
                           <td><div class='dept-label'>${getDeptHtml(employeePayrollData._department)}</div>
-                          
-                          <td>${stringifyDate(employeePayrollData._startDate)}</td>
+                          <td>${employeePayrollData._Contact}</td>
                           <td>${employeePayrollData._salary}</td>
                           
+                          <td>${stringifyDate(employeePayrollData._startDate)}</td>
+                        
                           <td>
                               <img id="${employeePayrollData._id}" onclick="remove(this)" alt="delete" src="../assets/delete-black-18dp.svg">
                               <img id="${employeePayrollData._id}" onclick="update(this)" alt="edit" src="../assets/create-black-18dp.svg">
@@ -40,11 +43,13 @@ const createEmployeePayrollJSON = () => {
     let empPayrollListLocal = [
       {       
         _name: 'Saurabh',
+        _EmailID: 'saurabh55@gmail.com',
         _gender: 'male',
         _department: [
             'Engineering',
             'Finance'
         ],
+        _Contact:'91 9834680875',
         _salary: '500000',
         _startDate: '1 Nov 2020',
         _note: '',
@@ -53,10 +58,12 @@ const createEmployeePayrollJSON = () => {
       },
       {
         _name: 'Savita',
+        _EmailID: 'rabbbu5@gmail.com',
         _gender: 'female',
         _department: [ 
             'Sales'
         ],
+        _Contact:'91 9934680875',
         _salary: '400000',
         _startDate: '1 Nov 2020',
         _note: '',
