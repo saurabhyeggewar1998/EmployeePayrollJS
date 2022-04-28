@@ -14,10 +14,18 @@ class EmployeePayRoll
        this._name = name; 
      else throw 'Name is Incorrect!';
    }
+   get EmailID() { return this._EmailID; }
+   set EmailID(EmailID) { 
+     let EmailIDRegex = RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
+     if (EmailIDRegex.test(EmailID))
+       this._EmailID = EmailID;
+     else throw 'EmailID is Incorrect!';
+   }
  
    get profilePic() { return this._profilePic; }
    set profilePic(profilePic) { 
      this._profilePic = profilePic; 
+    //  console.log("sAURABH",this._profilePic);
    }
  
    get gender() { return this._gender; }
@@ -28,6 +36,13 @@ class EmployeePayRoll
    get department() { return this._department; }
    set department(department) { 
      this._department = department; 
+   }
+   get Contact() { return this._Contact; }
+   set Contact(Contact) { 
+     let ContactRegex = RegExp("^[0-9]{2} [0-9]{10}$");
+     if (ContactRegex.test(Contact))
+       this._Contact = Contact;
+     else throw 'Contact is Incorrect!';
    }
  
    get salary() { return this._salary; }
@@ -42,11 +57,7 @@ class EmployeePayRoll
  
    get startDate() { return this._startDate; }
    set startDate(startDate) { 
-    // let now = new Date();
-    // if (startDate > now) throw 'Start Date is a Future Date!';
-    // var diff = Math.abs(now.getTime() - startDate.getTime());
-    // if (diff / (1000 * 60 * 60 * 24) > 30) 
-    //   throw 'Start Date is beyond 30 Days!';
+    
     this._startDate = startDate; 
   }
  
@@ -54,8 +65,8 @@ class EmployeePayRoll
      const options = { year: 'numeric', month: 'short', day: 'numeric' };
      const empDate = !this.startDate ? "undefined" : 
                      this.startDate;
-     return "id=" + this.id + ", name='" + this.name + ", gender='" + this.gender + 
-            ", profilePic='" + this.profilePic + ", department=" + this.department +
+     return "id=" + this.id + ", name='" + this.name + ", EmailID='" + this.EmailID +", gender='" + this.gender + 
+            ", profilePic='" + this.profilePic + ", department=" + this.department +", Contact='" + this.Contact+
             ", salary=" + this.salary + ", startDate=" + empDate + ", note=" + this.note;
    }
 }
